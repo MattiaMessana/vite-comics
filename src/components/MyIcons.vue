@@ -2,7 +2,6 @@
     export default {
         data() {
             return {
-                curIndex: 0,
                 icons: [
                     {
                         title: "DIGITAL COMICS",
@@ -28,8 +27,8 @@
             }
         },
         methods: {
-            getImagePath(imageName) {
-                // return new URL(`../assets/img/${icons[curIndex].image}`, import.meta.url).href;
+            getImagePath: function(imageName) {
+                return new URL(`../assets/img/${imageName.image}`, import.meta.url).href;
             }
         }
     }
@@ -38,8 +37,8 @@
 <template>
    <section>
     <div class="icon" v-for="curIcon in icons">
-        <!-- <img :src="getImagePath(curIcon.image)" :alt="curIcon.title"> -->
-        <img src="../assets/img/buy-comics-digital-comics.png" alt="">
+        <img :src="getImagePath(curIcon)" :alt="curIcon.title">
+        <!-- <img src="../assets/img/buy-comics-digital-comics.png" alt=""> -->
         <p> {{ curIcon.title }} </p>
     </div>
    </section>
@@ -62,8 +61,8 @@
         margin-left: 20px;
         margin-right: 20px;
         img {
-            width: 40px;
-            
+            // width: 40px;
+            height: 50px;
         }
         p {
             margin-left: 5px;
